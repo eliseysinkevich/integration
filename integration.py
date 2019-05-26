@@ -9,7 +9,7 @@ def euler_integrator(h, y0, fun):
     ДЛЯ ОДНОГО ШАГА
     y0 - начальное значение решения в момент времени t=0,
     h - шаг по времения,
-    f(y) - правая часть +дифференциального уравнения и его производная.
+    f(y) - правая часть дифференциального уравнения и его производная.
     Возвращают приближенное значение y(h)
     """
     return y0 + h * fun(y0)
@@ -72,7 +72,7 @@ def integrate(n, delta, fun, y0, integrator):
 
 def interval_error_plot(fun, y, integrator, t=1, max_number_of_steps=1000, number_of_points_on_plot=16):
     """
-    График зависимости погрешности интегрирования на интервале от длины шага интегрирвания.
+    График зависимости погрешности интегрирования на интервале от длины шага интегрирования.
     """
     eps = np.finfo(float).eps
     number_of_steps = np.logspace(0, np.log10(max_number_of_steps), number_of_points_on_plot).astype(
@@ -100,7 +100,10 @@ def order_plot(order):
 
 
 def y_exact(t):
-    return 2 * math.atan(math.tanh((1.22619 + t) / 2))
+    """
+    Аналитическое решение дифференциального уравнения
+    """
+    return 2 * math.atan(math.tanh(t / 2 + math.atanh(math.tan(0.5))))
 
 
 # Уравнение.
